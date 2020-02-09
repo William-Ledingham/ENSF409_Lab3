@@ -15,6 +15,7 @@ public class Supplier {
 		this.companyName = companyName;
 		this.address = address;
 		this.salesContact = salesContact;
+		this.itemsSoldBySupplier = new ArrayList<Item>();
 	}
 	
 	
@@ -48,6 +49,12 @@ public class Supplier {
 	}
 	public void setSalesContact(String salesContact) {
 		this.salesContact = salesContact;
+	}
+	public ArrayList<Item> getItemsSoldBySupplier() {
+		return itemsSoldBySupplier;
+	}
+	public void setItemsSoldBySupplier(ArrayList<Item> itemsSoldBySupplier) {
+		this.itemsSoldBySupplier = itemsSoldBySupplier;
 	}
 	
 }

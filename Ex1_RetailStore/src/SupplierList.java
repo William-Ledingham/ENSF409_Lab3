@@ -4,6 +4,10 @@ public class SupplierList {
 
 	private ArrayList<Supplier> supplierList;
 	
+	SupplierList()
+	{
+		supplierList = new ArrayList<Supplier>();
+	}
 	SupplierList(ArrayList<Supplier> supplierList)
 	{
 		this.supplierList = supplierList;
