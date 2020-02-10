@@ -4,7 +4,7 @@ public class Item {
 	private int idNumber;
 	private String description;
 	private int quantity;
-	private int price;
+	private double price;
 	private int supplierId;
 	private Supplier supplier;
 	
@@ -12,7 +12,7 @@ public class Item {
 	
 	
 	
-	Item(int idNumber, String description, int quantity, int price, int supplierId, Supplier supplier)
+	Item(int idNumber, String description, int quantity, double price, int supplierId, Supplier supplier)
 	{
 		this.idNumber = idNumber;
 		this.description = description;
@@ -20,7 +20,7 @@ public class Item {
 		this.price = price;
 		this.setSupplier(supplier);
 	}
-	Item(int idNumber, String description, int quantity, int price, int supplierId)
+	Item(int idNumber, String description, int quantity, double price, int supplierId)
 	{
 		this.idNumber = idNumber;
 		this.description = description;
@@ -31,8 +31,8 @@ public class Item {
 	
 	public String toString()
 	{
-		String s = "\nID Number: " + idNumber + "\nDescription: " + description + "\nQuantity: " + quantity
-				+ "\nPrice: " + price + "\nSupplier: " +
+		String s = "\nID Number: " + idNumber + "     Description: " + description + "     Quantity: " + quantity
+				+ "     Price: $" + price + "     Supplier: " +
 				supplier.getCompanyName() + "\n";
 		return s;
 	}
@@ -49,7 +49,7 @@ public class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}	
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {

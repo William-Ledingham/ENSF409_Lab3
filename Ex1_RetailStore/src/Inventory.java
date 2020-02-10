@@ -27,6 +27,19 @@ public class Inventory {
 		}
 	}
 	
+	public void addItemList(ArrayList<Item> itemList)
+	{
+		for(Item item : itemList)
+		{
+			this.itemList.add(item);
+		}
+	}
+	
+	public void printOrderTextFile()
+	{
+		order.printToTextFile();
+	}
+
 	
 	public Item searchToolName(String s)
 	{

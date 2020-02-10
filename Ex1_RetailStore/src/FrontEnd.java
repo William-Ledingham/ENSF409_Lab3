@@ -3,16 +3,17 @@ import java.util.Scanner;
 
 public class FrontEnd {
 
+	
 	public static void main(String[] args) {
 		
 		Shop shop = new Shop();
-		shop.readTextFiles();
+		shop.importDataTextFiles();
 		
 		Scanner sc = new Scanner(System.in);
 		while(true)
 		{
 			System.out.printf("\n1. List all tools\n2. Search for tool by toolName\n3. "
-					+ "Search for tool by toolID\n4. Check item quantity\n5. Decrease Item quantity\n6. Quit\n");
+					+ "Search for tool by toolID\n4. Check item quantity\n5. Decrease Item quantity\n6. Print Order to Text File\n7. Quit\n");
 			int input = Integer.parseInt(sc.nextLine());
 			switch(input)
 			{
@@ -69,6 +70,10 @@ public class FrontEnd {
 				
 				break;
 			case 6:
+				shop.printOrderTextFile();
+				System.out.printf("\nDone printing to text file\n");
+				break;
+			case 7:
 				return;
 			default:
 				break;

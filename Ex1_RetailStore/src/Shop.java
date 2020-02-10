@@ -13,33 +13,14 @@ public class Shop {
 		this.supplierList = new SupplierList();
 	}
 	
-	public void readTextFiles()
+	public void importDataTextFiles()
 	{
 		FileManager fileManager = new FileManager();
 		ArrayList<Item> items = fileManager.readItemsTextFile();
 		ArrayList<Supplier> suppliers = fileManager.readSupplierTextFile();
-		
-		for(Item item: items)
-		{
-			for(Supplier supplier: suppliers)
-			{
-				if(item.getSupplierId() == supplier.getIdNumber())
-				{
-					item.setSupplier(supplier);
-					supplier.getItemsSoldBySupplier().add(item);
-				}
-			}
-		}
-		
-		for(Item item: items)
-		{
-			getInventory().addItem(item);
-		}
-		for(Supplier supplier: suppliers)
-		{
-			getSupplierList().addSupplier(supplier);
-		}
-		
+		fileManager.matchItemsAndSuppliers(items, suppliers);
+		inventory.addItemList(items);
+		supplierList.addSupplierList(suppliers);
 	}
 	
 	public void decreaseItemQuantity(int id, int amount)
@@ -50,6 +31,11 @@ public class Shop {
 	public void printInventory()
 	{
 		System.out.printf(getInventory().toString());
+	}
+	
+	public void printOrderTextFile()
+	{
+		inventory.printOrderTextFile();
 	}
 	
 	public Item searchToolName(String s)

@@ -7,7 +7,7 @@ public class Order {
 	
 	Order()
 	{
-		
+		orderLineList = new ArrayList<OrderLine>();
 	}
 	
 	public void addOrderLine(OrderLine orderLine)
@@ -15,7 +15,13 @@ public class Order {
 		orderLineList.add(orderLine);
 	}
 	
-	
+	public void printToTextFile()
+	{
+		FileManager file = new FileManager();
+		file.printOrder(orderID, dateOrdered, orderLineList);
+	}
+
+
 	public String getDateOrdered() {
 		return dateOrdered;
 	}

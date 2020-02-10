@@ -18,4 +18,12 @@ public class SupplierList {
 		supplierList.add(newSupplier);
 	}
 	
+	public void addSupplierList(ArrayList<Supplier> supplierList)
+	{
+		for(Supplier supplier : supplierList)
+		{
+			addSupplier(supplier);
+		}
+	}
+	
 }
