@@ -10,12 +10,18 @@ public class Registration {
 		addRegistration ();
 	}
 	
+
+	
 	private void addRegistration () {
 		theStudent.addRegistration(this);
 		theOffering.addRegistration(this);
 	}
 	
-	
+	public void deleteRegistration()
+	{
+		theStudent.deleteRegistration(this);
+		theOffering.deleteRegistration(this);
+	}
 	public Student getTheStudent() {
 		return theStudent;
 	}

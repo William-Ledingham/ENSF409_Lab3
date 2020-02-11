@@ -35,7 +35,12 @@ public class CourseOffering {
 	public String toString () {
 		String st = "\n";
 		st += getTheCourse().getCourseName() + " " + getTheCourse().getCourseNum() + "\n";
-		st += "Section Num: " + getSecNum() + ", section cap: "+ getSecCap() +"\n";
+		st += "Section Num: " + getSecNum() + ", section cap: "+ getSecCap();
+		if(offeringRegList.size() < 8)
+		{
+			st += ",  Offering doesn't have enough students to run";
+		}
+		 st += "\n";
 		//We also want to print the names of all students in the section
 		return st;
 	}
@@ -43,6 +48,10 @@ public class CourseOffering {
 		// TODO Auto-generated method stub
 		offeringRegList.add(registration);
 		
+	}
+	public void deleteRegistration(Registration registration)
+	{
+		offeringRegList.remove(registration);
 	}
 	
 	

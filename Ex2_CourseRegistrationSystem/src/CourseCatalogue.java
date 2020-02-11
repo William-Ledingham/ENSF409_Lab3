@@ -1,19 +1,20 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CourseCatalogue {
 	
 	private ArrayList <Course> courseList;
 	
 	public CourseCatalogue () {
-		loadFromDataBase ();
+		//loadFromDataBase ();
 	}
-	
+/*	
 	private void loadFromDataBase() {
 		// TODO Auto-generated method stub
 		DBManager db = new DBManager();
-		setCourseList(db.readFromDataBase());
+		setCourseList(db.readCoursesFromDataBase());
 		
-	}
+	}*/
 	public void createCourseOffering (Course c, int secNum, int secCap) {
 		if (c!= null) {
 			CourseOffering theOffering = new CourseOffering (secNum, secCap);
@@ -54,6 +55,16 @@ public class CourseCatalogue {
 			st += "\n";
 		}
 		return st;
+	}
+	
+	public void userSearchCatalogue()
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter course Name: ");
+		String searchCourseName = sc.nextLine();	
+		System.out.println("Enter course ID: ");
+		int searchCourseID = Integer.parseInt(sc.nextLine());
+		System.out.println(searchCat(searchCourseName, searchCourseID));
 	}
 
 }
