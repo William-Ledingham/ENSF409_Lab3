@@ -2,16 +2,25 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * Utility class to assist the Shop in reading and printing to predefined text files.
+ * @author William Ledingham
+ * @version 1.0
+ * @since 2020-02-11
+ *
+ */
 public class FileManager {
 	
-	
+	/**
+	 * Reads text file of Items and returns an ArrayList of those Items.
+	 * @return ArrayList of Items for the inventory.
+	 */
 	public ArrayList<Item> readItemsTextFile()
 	{
-
-		
 		ArrayList<Item> itemList = new ArrayList<Item>();
 		
 		try {
@@ -34,6 +43,10 @@ public class FileManager {
 		
 	}
 	
+	/**
+	 * Reads a text file of suppliers and returns an ArrayList of those Suppliers.
+	 * @return ArrayList of Suppliers.
+	 */
 	public ArrayList<Supplier> readSupplierTextFile()
 	{
 		ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
@@ -56,7 +69,11 @@ public class FileManager {
 		
 		return supplierList;
 	}
-	
+	/**
+	 * Matches the ArrayLists of Items and Suppliers read from the text files to each other.
+	 * @param itemList ArrayList of Items to match.
+	 * @param supplierList ArrayList of Suppliers to match.
+	 */
 	public void matchItemsAndSuppliers(ArrayList<Item> itemList, ArrayList<Supplier> supplierList)
 	{
 		for(Item item: itemList)
@@ -73,22 +90,21 @@ public class FileManager {
 
 	}
 	
-	public void printOrder(int orderID, String dateOrdered, ArrayList<OrderLine> orderList)
+	/**
+	 * Prints a String to the specified order text file.
+	 * @param s String to be printed to text file.
+	 */
+	public void printOrder(String s)
 	{
 		try {
-			FileWriter fw = new FileWriter("C:\\Users\\wille\\Documents\\3rd_year_courses\\ENSF_409\\ENSF409_Lab3\\Ex1_RetailStore\\src\\order.txt");
-			BufferedWriter bw = new BufferedWriter(fw);
-			
-			bw.write("ORDER ID:    " + orderID + "\nDate Ordered:     " + dateOrdered + "\n\n");
-			for(OrderLine order : orderList)
-			{
-				bw.write("Item Description:    " + order.getItem().getDescription() + "\nAmount Ordered:     " + order.getAmountOrdered() 
-				+ "Supplier:     " + order.getItem().getSupplier().getCompanyName() + "\n\n");
-			}
+			PrintWriter writer = new PrintWriter("C:\\Users\\wille\\Documents\\3rd_year_courses\\ENSF_409\\ENSF409_Lab3\\Ex1_RetailStore\\src\\order.txt");
+			writer.printf(s);
+			writer.close();
 			
 		} catch (Exception e) {
 			System.out.printf("\nError reading supplier text file");
 		}
+	
 	}
 
 }

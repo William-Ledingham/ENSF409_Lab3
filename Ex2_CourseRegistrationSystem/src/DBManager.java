@@ -53,9 +53,11 @@ public class DBManager {
 		{
 			if(input == student.getStudentId())
 			{
+				sc.close();
 				return student;
 			}
 		}
+		sc.close();
 		return null;
 	}
 	

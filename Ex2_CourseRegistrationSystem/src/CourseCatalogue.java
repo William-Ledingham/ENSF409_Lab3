@@ -65,6 +65,7 @@ public class CourseCatalogue {
 		System.out.println("Enter course ID: ");
 		int searchCourseID = Integer.parseInt(sc.nextLine());
 		System.out.println(searchCat(searchCourseName, searchCourseID));
+		sc.close();
 	}
 
 }

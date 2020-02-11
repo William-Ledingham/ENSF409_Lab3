@@ -1,23 +1,10 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class RegistrationApp {
 	
 	public static void main (String [] args) {
-		/*CourseCatalogue cat = new CourseCatalogue ();
-		ArrayList<Student> studentDatabase = new ArrayList<Student>();
-		studentDatabase.add(new Student ("Sara", 1));
-		studentDatabase.add(new Student ("Sam", 2));
-		ArrayList<Course> courseDatabase = new ArrayList<Course>();
-		Course myCourse = cat.searchCat("ENGG", 233);
-		if (myCourse != null) {
-			cat.createCourseOffering(myCourse, 1, 100);
-			cat.createCourseOffering(myCourse, 2, 200);
-		}
-*/
-		DBManager db = new DBManager();
-
 		
+		DBManager db = new DBManager();
 		
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -48,12 +35,14 @@ public class RegistrationApp {
 				temp3.printAllCourses();
 				break;
 			case 6:
+				sc.close();
 				return;
 			default:
 				break;
 				
 			}		
 		}
+		
 		
 	}
 

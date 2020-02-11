@@ -1,0 +1,7 @@
+ORDER ID:    100
+Date Ordered:     2020-02-14
+
+Item Description:    Inny Outies
+Amount Ordered:     31
+Supplier:     Irkle Industries
+

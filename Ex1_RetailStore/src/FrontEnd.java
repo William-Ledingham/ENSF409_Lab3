@@ -1,19 +1,107 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Front end for the retail store application.
+ * Provides menu for interacting with the Shop and its inventory.
+ * @author William Ledingham
+ * @version 1.0
+ * @since 2020-02-11
+ *
+ */
 public class FrontEnd {
 
+	/**
+	 * The Shop that holds all the data.
+	 */
+	private Shop shop;
+	/**
+	 * Scanner for user input.
+	 */
+	private Scanner sc;
 	
-	public static void main(String[] args) {
-		
-		Shop shop = new Shop();
+	/**
+	 * Constructs the front end with a new shop and imports the data for that shop.
+	 */
+	FrontEnd()
+	{
+		shop = new Shop();
 		shop.importDataTextFiles();
+		sc = new Scanner(System.in);
+	}
+	
+	/**
+	 * Prompts user for Tool Name.
+	 * @return String of the users answer.
+	 */
+	private String userEnterToolName()
+	{
+		System.out.printf("Enter Tool Name:\n");
+		return sc.nextLine();
+	}
+	/**
+	 * Prompts user for Tool ID.
+	 * @return Int of the users answer.
+	 */
+	private int userEnterToolID()
+	{
+		System.out.printf("Enter Tool ID:\n");
+		return Integer.parseInt(sc.nextLine());
+	}
+	
+	/**
+	 * Searches the shop for tool by name and prints result.
+	 */
+	private void searchToolByName()
+	{
+		String name = userEnterToolName();
+		Item item = shop.searchToolName(name);
+		System.out.println(item);
+	}
+	/**
+	 * Searches the shop for tool by ID and prints result.
+	 */
+	private void searchToolByID()
+	{
+		Item item = shop.searchToolID(userEnterToolID());
+		System.out.println(item);
 		
-		Scanner sc = new Scanner(System.in);
+	}
+	/**
+	 * Checks the item quantity of a tool specified by user.
+	 * Prints result.
+	 */
+	private void checkItemQuantity()
+	{
+		Item item = shop.searchToolID(userEnterToolID());
+		shop.checkItemQuantity(item);
+		
+	}
+	/**
+	 * Decreases an item quantity specified by user.
+	 * Prints result
+	 */
+	private void decreaseItemQuantity()
+	{
+		int id = userEnterToolID();
+		System.out.printf("Enter amount to decrease quantity:\n");
+		int amount = Integer.parseInt(sc.nextLine());
+		shop.decreaseItemQuantity(id, amount);		
+	}
+	
+	
+	/**
+	 * Menu for user to interact with shop through commands.
+	 */
+	public void menu()
+	{
 		while(true)
 		{
-			System.out.printf("\n1. List all tools\n2. Search for tool by toolName\n3. "
-					+ "Search for tool by toolID\n4. Check item quantity\n5. Decrease Item quantity\n6. Print Order to Text File\n7. Quit\n");
+			System.out.printf("\n1. List all tools"
+					+ "\n2. Search for tool by toolName"
+					+ "\n3. Search for tool by toolID"
+					+ "\n4. Check item quantity"
+					+ "\n5. Decrease Item quantity"
+					+ "\n6. Print Order to Text File"
+					+ "\n7. Quit\n");
 			int input = Integer.parseInt(sc.nextLine());
 			switch(input)
 			{
@@ -21,57 +109,19 @@ public class FrontEnd {
 				shop.printInventory();
 				break;
 			case 2:
-				System.out.printf("Enter Tool Name:\n");
-				String searchTool = sc.nextLine();
-				Item item2 = shop.searchToolName(searchTool);
-				if(item2 == null)
-				{
-					System.out.printf("No tool with such a name.\n");
-				}
-				else
-				{
-					System.out.printf(item2.toString());
-				}
+				searchToolByName();
 				break;
 			case 3:
-				System.out.printf("Enter Tool ID:\n");
-				int id3 = Integer.parseInt(sc.nextLine());
-				Item item3 = shop.searchToolID(id3);
-				if(item3 == null)
-				{
-					System.out.printf("No tool with such a ID.\n");
-				}
-				else
-				{
-					System.out.printf(item3.toString());
-				}
+				searchToolByID();
 				break;
 			case 4:
-				System.out.printf("Enter Tool ID:\n");
-				int id4 = Integer.parseInt(sc.nextLine());
-				Item item4 = shop.searchToolID(id4);
-				if(item4 == null)
-				{
-					System.out.printf("No tool with such a ID.\n");
-				}
-				else
-				{
-					System.out.printf("Tool ID %d has a quantity of: %d\n",item4.getIdNumber(), item4.getQuantity());
-				}
+				checkItemQuantity();
 				break;
 			case 5:
-				System.out.printf("Enter Tool ID:\n");
-				int id5 = Integer.parseInt(sc.nextLine());
-				System.out.printf("Enter amount to decrease quantity:\n");
-				int amount = Integer.parseInt(sc.nextLine());
-
-				shop.getInventory().decreaseItemQuantity(id5, amount);
-				System.out.printf("Tool ID %d has a quantity of: %d\n",shop.searchToolID(id5).getIdNumber(), shop.searchToolID(id5).getQuantity());
-				
+				decreaseItemQuantity();
 				break;
 			case 6:
 				shop.printOrderTextFile();
-				System.out.printf("\nDone printing to text file\n");
 				break;
 			case 7:
 				return;
@@ -79,7 +129,16 @@ public class FrontEnd {
 				break;
 			}
 		}
+	}
 	
+	/**
+	 * Main that starts the front end of the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		FrontEnd frontEnd = new FrontEnd();		
+		frontEnd.menu();
 	}
 
 }

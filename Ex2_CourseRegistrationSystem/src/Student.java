@@ -14,28 +14,6 @@ public class Student {
 		studentRegList = new ArrayList<Registration>();
 	}
 
-	public String getStudentName() {
-		return studentName;
-	}
-
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
-
-	public int getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
-	}
-	@Override
-	public String toString () {
-		String st = "Student Name: " + getStudentName() + "\n" +
-				"Student Id: " + getStudentId() + "\n\n";
-		return st;
-	}
-
 	public void addRegistration(Registration registration) {
 		// TODO Auto-generated method stub
 		studentRegList.add(registration);
@@ -61,6 +39,10 @@ public class Student {
 		for(Registration reg : studentRegList)
 		{
 			System.out.println(reg.getTheOffering());
+		}
+		if(studentRegList.size() == 0)
+		{
+			System.out.println("Student is not registered for any courses");
 		}
 	}
 	
@@ -90,6 +72,7 @@ public class Student {
 
 		Course temp = cat.searchCat(courseName, courseID);
 		addCourse(temp, courseSection);
+		sc.close();
 	}
 	
 	public void userDeleteCourse(CourseCatalogue cat)
@@ -101,6 +84,30 @@ public class Student {
 		int courseID = Integer.parseInt(sc.nextLine());
 		Course tempCourse = cat.searchCat(courseName, courseID);
 		this.deleteRegistration(tempCourse);
+		sc.close();
+	}
+	
+	
+	public String getStudentName() {
+		return studentName;
+	}
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+	@Override
+	public String toString () {
+		String st = "Student Name: " + getStudentName() + "\n" +
+				"Student Id: " + getStudentId() + "\n\n";
+		return st;
 	}
 
 }
